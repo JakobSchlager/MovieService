@@ -29,7 +29,7 @@ namespace MovieDbLib
                     // Uncomment the following line if you want to print generated
                     // SQL statements on the console.
                     // .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
-                    .UseMySql(configuration["ConnectionStrings:DefaultConnection"], new MySqlServerVersion(new Version(8, 0, 26))); 
+                    .UseMySql(configuration["ConnectionStrings:DefaultConnection"], new MySqlServerVersion(new Version(8, 0, 26)), options => options.EnableRetryOnFailure()); 
 
                 return new MovieDbContext(optionsBuilder.Options);
             }

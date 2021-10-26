@@ -24,7 +24,7 @@ namespace MovieService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MovieDbContext>(options => options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], new MySqlServerVersion(new Version(8, 0, 26)))); 
+            services.AddDbContext<MovieDbContext>(options => options.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], new MySqlServerVersion(new Version(8, 0, 26)), providerOptions => providerOptions.EnableRetryOnFailure())); 
 
             services.AddScoped<Services.MovieService>();
             services.AddScoped<Services.PresentationService>(); 
