@@ -24,7 +24,7 @@ namespace MovieDbLib.Entities
         {
             builder.ToTable("movie"); 
 
-            dynamic movies = JArray.Parse(File.ReadAllText($"{Assembly.GetExecutingAssembly().Location}\\..\\Files\\movies.json"));
+            dynamic movies = JArray.Parse(File.ReadAllText($"{Assembly.GetExecutingAssembly().Location}/../Files/movies.json"));
                 
             int pK = 1;
             foreach(var movie in movies)
