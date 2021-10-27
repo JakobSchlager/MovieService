@@ -18,6 +18,11 @@ namespace MovieService.Controllers
             this._movieService = movieSerives; 
         }
 
+	[HttpGet("/test")]
+	public ActionResult<String> Test() {
+  	    return Ok("working! :)"); 
+	}
+
         [HttpGet]
         public ActionResult<List<MovieDto>> GetAll()
         {
