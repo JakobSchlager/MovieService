@@ -297,14 +297,14 @@ namespace MovieDbLib.Migrations
                             Id = 1,
                             MovieId = 1,
                             RoomId = 1,
-                            StartTime = "25.10.2021 00:00:00"
+                            StartTime = "10/29/2021 12:00:00 AM"
                         },
                         new
                         {
                             Id = 2,
                             MovieId = 2,
                             RoomId = 2,
-                            StartTime = "26.10.2021 00:00:00"
+                            StartTime = "10/30/2021 12:00:00 AM"
                         });
                 });
 

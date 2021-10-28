@@ -15,18 +15,19 @@ namespace MovieService.Controllers
 
         public MovieController(Services.MovieService movieSerives)
         {
-            this._movieService = movieSerives; 
+            this._movieService = movieSerives;
         }
 
-	[HttpGet("/test")]
-	public ActionResult<String> Test() {
-  	    return Ok("working! :)"); 
-	}
+        [HttpGet("/test")]
+        public ActionResult<String> Test()
+        {
+            return Ok("working! :)");
+        }
 
         [HttpGet]
         public ActionResult<List<MovieDto>> GetAll()
         {
-            return Ok(_movieService.GetMovies());  
+            return Ok(_movieService.GetMovies());
         }
 
         [HttpGet("{id}")]
@@ -38,13 +39,13 @@ namespace MovieService.Controllers
         [HttpPost]
         public ActionResult<MovieDto> Post([FromBody] MovieDto movieDto)
         {
-            return (_movieService.AddMovie(movieDto)); 
+            return (_movieService.AddMovie(movieDto));
         }
 
         [HttpGet("{id}/presentations")]
         public ActionResult<List<PresentationDto>> GetPresentationsOfMovie(int id)
         {
-            return (_movieService.GetPresentationsOfMovie(id)); 
+            return (_movieService.GetPresentationsOfMovie(id));
         }
     }
 }
