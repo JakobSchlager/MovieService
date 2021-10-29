@@ -16,7 +16,19 @@ namespace MovieService.Controllers
 
         public PresentationController(Services.PresentationService presentationService)
         {
-            this._presentationService = presentationService; 
+            this._presentationService = presentationService;
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<PresentationDto> Get(int id)
+        {
+            return Ok(_presentationService.GetPresentation(id));
+        }
+
+        [HttpPost]
+        public ActionResult<MovieDto> Post([FromBody] PresentationDto presentationDto)
+        {
+            return Ok(_presentationService.AddPresentation(presentationDto));
         }
     }
 }

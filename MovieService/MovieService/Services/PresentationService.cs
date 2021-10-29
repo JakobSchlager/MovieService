@@ -25,5 +25,41 @@ namespace MovieService.Services
             })
             .ToList();
         }
+
+	public PresentationDto GetPresentation(int id)
+        {
+            return _movieDb.Presentations.Select(x => new PresentationDto
+            {
+                Id = x.Id,
+                MovieId = x.MovieId,
+                RoomId = x.RoomId,
+                StartTime = x.StartTime,
+            })
+            .Single(x => x.Id == id);
+        }
+
+        public ActionResult<PresentationDto> AddPresentation(PresentationDto presentationDto)
+        {
+            var presentation = _movieDb.Presentations.Add(new Presentation
+            {
+                Id = 0,
+                MovieId = presentationDto.MovieId,
+                RoomId = presentationDto.RoomId,
+                StartTime = presentationDto.StartTime,
+            }).Entity;
+
+            _movieDb.SaveChanges();
+
+            return MapToPresentationDto(presentation);
+        }
+
+        private static PresentationDto MapToPresentationDto(Presentation presentation) =>
+            new PresentationDto
+            {
+                Id = presentation.Id,
+                MovieId = presentation.MovieId,
+                RoomId = presentation.RoomId,
+                StartTime = presentation.StartTime,
+            };
     }
 }
