@@ -1,4 +1,5 @@
 ﻿using MovieDbLib;
+using MovieDbLib.Entities;
 using MovieService.DTOs;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace MovieService.Services
             .Single(x => x.Id == id);
         }
 
-        public ActionResult<PresentationDto> AddPresentation(PresentationDto presentationDto)
+        public PresentationDto AddPresentation(PresentationDto presentationDto)
         {
             var presentation = _movieDb.Presentations.Add(new Presentation
             {
